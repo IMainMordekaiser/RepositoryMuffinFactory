@@ -6,7 +6,6 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import static frc.robot.Constants.SUBSYSTEM.*;
-import frc.robot.RobotContainer;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 

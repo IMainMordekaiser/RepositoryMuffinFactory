@@ -10,12 +10,15 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import static frc.robot.Constants.SUBSYSTEM.JOYSTICK.*;
+
+import frc.robot.commands.Auto;
 import frc.robot.commands.DriveStraight;
-import frc.robot.commands.ExampleCommand;
-import frc.robot.commands.Grab;
+import frc.robot.commands.Shoot;
 import frc.robot.subsystems.DriveBase;
-import frc.robot.subsystems.ExampleSubsystem;
-import frc.robot.subsystems.Grabber;
+import frc.robot.subsystems.Shooter;
+import frc.robot.subsystems.Sucker;
+import frc.robot.subsystems.Opener;
+import frc.robot.commands.OpenToSuck;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -25,14 +28,17 @@ import frc.robot.subsystems.Grabber;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
-  private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
   public static  final Joystick taycam = new Joystick(Y);
-  private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
   private final DriveBase drivebase = new DriveBase();
-  private final Grabber gibberish = new Grabber();
+  private final Shooter gibberish = new Shooter();
+  private final Opener openeer = new Opener();
+  private final Sucker sugma = new Sucker();
 
   Command drivestraight = new DriveStraight(drivebase, 0.8);
-  Command grab = new Grab(gibberish, 0.1);
+  Command grab = new Shoot(gibberish, 0.1);
+  Command opentosuck = new OpenToSuck(openeer, 0.2);
+  Command m_auto = new Auto(openeer, gibberish, drivebase, sugma);
+  /*Opener opener, Shooter shooter , DriveBase Drive , Sucker sucker */
   
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -57,6 +63,6 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
     // An ExampleCommand will run in autonomous
-    return m_autoCommand;
+    return m_auto;
   }
 }

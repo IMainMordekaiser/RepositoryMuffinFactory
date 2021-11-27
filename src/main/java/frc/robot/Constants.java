@@ -27,6 +27,7 @@ public final class Constants {
       public static final int L1 = 1;
       public static final int L2 = 0;
       public static final int A = 10;
+      public static final int B = 11;
    } 
    }
     
